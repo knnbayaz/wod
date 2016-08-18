@@ -3,7 +3,7 @@ from forms import WorkoutItem
 
 record = Blueprint('record', __name__)
 
-@record.route('/record', methods=['GET', 'POST'])
+@record.route('/', methods=['GET', 'POST'])
 def entry():
     workoutForm = WorkoutItem()
     workoutForm.process()
