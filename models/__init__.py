@@ -1,7 +1,7 @@
-from entities import db, WorkoutGroup, Workout
+from entities import db, Workoutgroup, Workout
 
 
 
 
-from models import db, WorkoutGroup, Workout
+from models import db, Workoutgroup, Workout
 

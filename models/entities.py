@@ -1,16 +1,15 @@
 from flask_sqlalchemy import SQLAlchemy
-from ..ex50.manage import app
+from application.app import app
 
 
 
 db = SQLAlchemy(app)
 
 class Workout(db.Model):
-    Id = db.Column(db.Integer, primary_key = True)
-    Name = db.Column(db.String(50))
-    GroupId = db.Column(db.Integer, db.ForeignKey('WorkoutGroup.Id'))
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(50))
+    workoutgroup_id = db.Column(db.Integer, db.ForeignKey('workoutgroup.id'))
     
-    group = db.relationship('WorkoutGroup', backref = db.backref('workouts', lazy = 'dynamic'))
     
     def __init__(self, name, group):
         self.Name = name
@@ -20,9 +19,10 @@ class Workout(db.Model):
         return '<Workout %r>' % self.Name
         
 
-class WorkoutGroup(db.Model):
-    Id = db.Column(db.Integer, primary_key = True)
-    Name = db.Column(db.String(50))
+class Workoutgroup(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(50))
+    workouts = db.relationship('Workout', backref='workout_group', lazy='dynamic')
     
     def __init__(self, name):
         self.Name = name
