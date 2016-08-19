@@ -3,7 +3,7 @@ from forms import WorkoutItem
 import os
 
 
-record = Blueprint('record', __name__, template_folder='/home/ubuntu/workspace/ex50/templates/record')
+record = Blueprint('record', __name__, template_folder='/home/ubuntu/workspace/ex50/templates/record', static_folder = '/home/ubuntu/workspace/ex50/static' )
 
 @record.route('/', methods=['GET', 'POST'])
 def entry():
